@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Exercise 4: Extending HTMLAnchorElement</title>
+    </head>
+    <body>
+        <main class="blog-post">
+            <article>
+                <blog-headline heading="Blog Post About Kittens" />    
+            </article>
+            <article>
+                <blog-headline>Blog Post About Puppies</blog-headline>   
+            </article>
+        </main>
+        <script>
+            class BlogHeadline extends HTMLElement {
+                constructor() {
+                    super();
+                    if (this.hasAttribute("heading")) {
+                        this.textContent = this.getAttribute("heading");
+                    }
+                }
+
+                get heading() {
+                    return this.getAttribute("heading");
+                }
+
+                set heading(newValue) {
+                    this.setAttribute("heading", newValue);
+                    this.textContent = this.getAttribute("heading");
+                }
+            }
+            window.customElements.define("blog-headline", BlogHeadline);
+
+            const blogHeadings = document.querySelectorAll('blog-heading');
+            blogHeadings.forEach(heading => heading.setAttribute("heading", "TEST TEST"))
+        </script>
+    </body>
+</html>
