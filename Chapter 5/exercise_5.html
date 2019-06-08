@@ -1,28 +1,71 @@
 <!DOCTYPE html>
 <html lang=”en”>
-	<head>
-		<meta charset=”utf-8”>
-		<title>Exercise 5: Adding Subtitles</title>
-		<style>
-			.video-container {
-				max-width: 1080px;
-                margin: 16px auto;
-			}
- 
-  			.video-container video {
- 				width: 100%;
+    <head>
+        <meta charset=”utf-8”>
+        <title>Exercise 6: Drawing Shapes</title>
+        <style> canvas { border: 1px solid gray; } </style>
+    </head>
+    <body>
+        <canvas width="320" height="240" id="canvasArea"></canvas>
+        <script>
+            function fillCircle(context, centerX, centerY, radius, fillStyle) {
+                context.beginPath();
+                context.fillStyle = fillStyle;
+                context.arc(centerX, centerY, radius, 0, Math.PI * 2, false);
+                context.fill();
             }
- 		</style>  		
-	</head>
-	<body>
- 	<div class="video-container">
-             <video id="video-1" poster="media/poster.png" controls>
-                <source src="media/video.webm" type="video/webm">
-				<source src="media/video.mp4" type="video/mp4">
-				<track src="media/subtitles-en.vtt" kind="subtitles" label="English" srclang="en" default>
-				<track src="media/subtitles-es.vtt" kind="subtitles" label="Español" srclang="es">
-				Your browser does not support the HTML5 <code>video</code> element.
- 		</video>
-	</div>
-	</body>
+
+            function drawSun(context) {
+                const centerX = 250;
+                const centerY = 80;
+                const radius = 45;
+
+                const numberOfFlares = 12;
+                for (var i = 0; i<numberOfFlares; i++) {
+                    const angle = i * (Math.PI * 2 / numberOfFlares);
+                    fillCircle(
+                        context, 
+                        centerX + Math.sin(angle) * radius,
+                        centerY + Math.cos(angle) * radius, 
+                        10,
+                        "gold"
+                    );
+                }
+                fillCircle(context, centerX, centerY, radius, "yellow");
+            }
+
+            function drawSnowflake(context) {
+                const centerX = 60;
+                const centerY = 180;
+                const radius = 30;
+
+                context.lineWidth = 5;
+                context.lineCap = 'round';
+                context.beginPath();
+                context.strokeStyle = "lightblue";
+
+                const numberOfLines = 8;
+                for (var i = 0; i < numberOfLines; i++) {
+                    const angle = i * (Math.PI * 2 / numberOfLines);
+                    context.moveTo(centerX, centerY);
+                    context.lineTo(
+                        centerX + Math.sin(angle) * radius, 
+                        centerY + Math.cos(angle) * radius
+                    );
+                }
+                context.stroke();
+            }
+
+            function drawFrame(context) {
+                drawSun(context);
+                drawSnowflake(context);
+            }
+
+            const canvasElement = document.getElementById('canvasArea');
+            if (canvasElement.getContext) {
+ 				const context = canvasElement.getContext('2d');
+                drawFrame(context);
+            }
+        </script>
+    </body>
 </html>
