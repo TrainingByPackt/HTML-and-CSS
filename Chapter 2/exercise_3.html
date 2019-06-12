@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html>
-
+ 
 <head>
-    <title>Flex based layout</title>
-    <style type=”text/css”> section { display: flex; flex-wrap: wrap; } div { flex-basis: 25%; } </style> </head> <body>
-        <header>
-			… Header content will go here
-		</header>
-		<nav>
-			… List of links will go here
-		</nav>
-		<section>
-	     		<div>product 1</div>
-	     		<div>product 2</div>
-	     		<div>product 3</div>
-	     		<div>product 4</div>
-	     		<div>product 5</div>
-	     		<div>product 6</div>
-	     		<div>product 7</div>
-	     		<div>product 8</div>
-           </section>
-           <footer>
-			… Links and copyright information will go here
-		</footer>
-	</body>
+  <title>Experimenting with the box model</title>
+  <style type="text/css">
+    .box-1 {
+      float: left;
+      width: 200px;
+      height: 200px;
+      padding: 50px;
+      border: 1px solid red;
+    }
+ 
+    .box-2 {
+      float: left;
+      width: 20%;
+      height: 20%;
+      padding-top: 50px;
+      margin-left: 10px;
+      border: 5px solid green;
+    }
+ 
+    .box-3 {
+      float: left;
+      width: 300px;
+      padding: 30px;
+      margin: 50px;
+      border-top: 50px solid blue;
+    }
+  </style>
+</head>
+ 
+<body>
+  <div class="box-1">Box 1</div>
+  <div class="box-2">Box 2</div>
+  <div class="box-3">Box 3</div>
+</body>
+ 
 </html>

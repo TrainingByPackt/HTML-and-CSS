@@ -1,28 +1,49 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>Grid based layout</title>
-    <style type=”text/css”> section { display: grid; grid-template-columns: auto auto auto auto; } </style> </head>
-        <body>
-        <header>
-			… Header content will go here
-		</header>
-		<nav>
-			… List of links will go here
-		</nav>
-		<section>
-	     		<div>product 1</div>
-	     		<div>product 2</div>
-	     		<div>product 3</div>
-	     		<div>product 4</div>
-	     		<div>product 5</div>
-	     		<div>product 6</div>
-	     		<div>product 7</div>
-	     		<div>product 8</div>
-           </section>
-           <footer>
-			… Links and copyright information will go here
-		</footer>
-	</body>
+    <head>
+        <title>Video store home page</title>
+        <style>
+          header,
+          nav,
+          section,
+          footer {
+            background: #659494;
+            border-radius: 5px;
+            color: white;
+            font-family: arial, san-serif;
+            font-size: 30px;
+            text-align: center;
+          }
+ 
+          header:before,
+          nav:before,
+          section:before,
+          footer:before {
+            content: '<';
+          }
+ 
+          header:after,
+          nav:after,
+          section:after,
+          footer:after {
+            content: '>';
+          }
+          
+          header,
+          nav,
+          section,
+          footer {
+            border: 1px solid grey;
+            padding: 50px;
+            margin-bottom: 25px;
+          }
+ 
+        </style>
+    </head>
+    <body>
+        <header>header</header>
+        <nav>nav</nav>
+        <section>main content</section>
+        <footer>footer</footer>
+    </body>
 </html>
