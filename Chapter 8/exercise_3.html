@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Exercise 3: Print Styles</title>
+    <style>
+    	header, section, aside, footer {
+    		font-size: 20px;
+    		text-align: center;
+    		padding: 10px;
+    		background: lightgrey;
+    		margin-bottom: 20px;
+    	}
+        main {
+        	display: flex;
+        }
+        section {
+        	flex: 1 1 auto;
+        	margin-right: 20px;
+        }
+        aside {
+        	flex: 0 0 200px;
+        }
+        @media only print { 
+			footer, aside {
+				display: none;
+			}
+			header, section {
+				margin-right: 0;
+				background: transparent;
+			}
+		}
+    </style>
+</head>
+ 
+<body>
+    <header>Header <!-- contains website identity (logo), useful to print --></header>
+    <main>
+        <section>Content <!-- main website content for printing --></section>
+        <aside>Sidebar <!--  contains adverts, not required for printing --></aside>
+	</main>
+	<footer>Footer <!-- contains navigation, not required for printing --></footer>
+</body>
+</html>
