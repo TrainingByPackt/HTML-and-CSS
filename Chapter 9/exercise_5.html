@@ -2,32 +2,28 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Exercise 3: Custom Element with Attributes</title>
+        <title>Exercise 5: Shadow DOM</title>
         <style>
-            .test-ui {
-                margin-top: 2rem;
-            }
-
-            .new-post::before {
-                font-weight: bold;
-                content: "⏰ NEW! ⏰";
+            h1 {
+                font-family: Arial, Helvetica, sans-serif;
+                color: white;
+                background:lightskyblue;
+                padding: 16px;
             }
         </style>
     </head>
     <body>
         <main class="blog-posts">
             <article>
-                <blog-headline id="cat-headline" type="cats" newpost>Blog Post About Kittens</blog-headline>               
+                <h1>Normal H1 Heading</h1>
+            </article>
+            <article>
+                <blog-headline type="cats" newpost>Blog Post About Kittens</blog-headline>               
             </article>
             <article>
                 <blog-headline type="dogs">Blog Post About Puppies</blog-headline>   
             </article>
         </main>
-        <div class="test-ui">
-            <button id="swap-type-1">Swap type attribute</button>
-            <button id="swap-newpost-1">Swap newpost attribute</button>
-            <button id="toggle-connect-1">Toggle connection</button>
-        </div>
         <script>
             class BlogHeadline extends HTMLElement {
                 static get observedAttributes() {
@@ -37,10 +33,20 @@
                 constructor() {
                     super();
                     this._heading = this.textContent;
+                    this.textContent = "";
+                    
+                    this.attachShadow({ mode: 'open' });
+                    
+                    this.headingElement = document.createElement('h1');
+                    this.headingElement.textContent = this._heading;
+
+                    this.styleElement = document.createElement('style');
+                    this.styleElement.innerText = `.new-post::after { font-weight: bold; content: "⏰ NEW! ⏰"; margin-left: 8px; }`;
+                    this.shadowRoot.appendChild(this.styleElement);
+                    this.shadowRoot.appendChild(this.headingElement);
                 }
 
                 connectedCallback() {
-                  console.log("Connected");
                   this.setIcon(this.type);
                 }
 
@@ -90,54 +96,25 @@
                 setIcon(type) {
                     switch(type) {
                         case "cats":
-                            this.textContent = "🐱 " + this.heading + " 🐱";
+                            this.headingElement.textContent = "🐱 " + this.heading + " 🐱";
                             break;
                         case "dogs":
-                            this.textContent = "🐶 " + this.heading + " 🐶";
+                            this.headingElement.textContent = "🐶 " + this.heading + " 🐶";
                             break;
                     }
                 }
 
                 setIsNewPostIcon(isNewPost) {
                     if (isNewPost) {
-                        this.classList.add("new-post");
+                        this.headingElement.classList.add("new-post");
                     }
                     else {
-                        this.classList.remove("new-post");
+                        this.headingElement.classList.remove("new-post");
                     }
                 }
             }
+
             window.customElements.define("blog-headline", BlogHeadline);
-
-            const headline = document.querySelector('blog-headline');
-            const headlineParent = headline.parentElement;
-            const swapTypeButton = document.getElementById('swap-type-1');
-            const swapNewpostButton = document.getElementById('swap-newpost-1');
-            const toggleConnectionButton = document.getElementById('toggle-connect-1');
-
-            swapTypeButton.addEventListener('click', function() {
-                const type = headline.getAttribute('type');
-                headline.setAttribute('type', type === 'cats' ? 'dogs' : 'cats')
-            });
-
-            swapNewpostButton.addEventListener('click', function() {
-                const newpost = headline.hasAttribute('newpost');
-                if (newpost) {
-                    headline.removeAttribute('newpost');
-                }
-                else {
-                    headline.setAttribute('newpost', '');
-                }
-            });
-
-            toggleConnectionButton.addEventListener('click', function() {
-                if (headline.parentElement) {
-                    headlineParent.removeChild(headline);
-                }
-                else {
-                    headlineParent.insertBefore(headline, headlineParent.firstChild);
-                }
-            });
         </script>
     </body>
 </html>
