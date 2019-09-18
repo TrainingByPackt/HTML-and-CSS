@@ -54,13 +54,11 @@
                 }
 
                 setIcon(type) {
-                    switch(type) {
-                        case "cats":
-                            this.textContent = "🐱 " + this.textContent + " 🐱";
-                            break;
-                        case "dogs":
-                            this.textContent = "🐶 " + this.textContent + " 🐶";
-                            break;
+                    if (type === "cats") {
+ 					    this.textContent = "🐱 " + this.textContent + " 🐱";
+                    }
+                    else if (type === "dogs") {
+                        this.textContent = "🐶 " + this.textContent + " 🐶";
                     }
                 }
 
