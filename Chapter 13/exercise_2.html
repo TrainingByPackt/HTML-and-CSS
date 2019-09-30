@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Exercise 2: Fill Color Paint Worklet</title>
+        <title>Exercise 2: A Simple Paint Worklet</title>
         <style>
             body {
                 padding: 0;
@@ -12,32 +12,21 @@
         </style>
     </head>
     <body>
-        <div class="fill-background green">
-            This div should have a green background.
-        </div>
-        <div class="fill-background orange">
-            This div should have an orange background.
+        <div class="red-background">
+            This div should have a red background.
         </div>
         <style>
-            .green {
-                --fill-color: #05a505;
-            }
-
-            .orange {
-                --fill-color: #ff9900;
-            }
-
-            .fill-background {
-                box-sizing: border-box;
-                background: paint(color-fill);
+            .red-background {
+                background: paint(red-fill);
                 color: white;
+                box-sizing: border-box;
                 width: 100%;
                 height: 100px;
                 padding: 16px;
             }
         </style>
         <script>
-            CSS.paintWorklet.addModule('color-fill-paint.js');
+            CSS.paintWorklet.addModule('red-fill-paint.js');
         </script>
     </body>
 </html>
