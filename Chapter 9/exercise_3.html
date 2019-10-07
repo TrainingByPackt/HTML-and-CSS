@@ -50,13 +50,11 @@
 
                 attributeChangedCallback(name, oldValue, newValue) {
                     if (oldValue === newValue) { return; }
-                    switch(name) {
-                        case 'type':
-                            this.setIcon(this.type);
-                            break;
-                        case 'newpost':
-                            this.setIsNewPostIcon(this.newpost);
-                            break;
+                    if (name === "type") {
+                        this.setIcon(this.type);
+                    }
+                    else if (name === "newpost") {
+                        this.setIsNewPostIcon(this.newpost);
                     }
                 }
 
@@ -88,13 +86,11 @@
                 }
 
                 setIcon(type) {
-                    switch(type) {
-                        case "cats":
-                            this.textContent = "🐱 " + this.heading + " 🐱";
-                            break;
-                        case "dogs":
-                            this.textContent = "🐶 " + this.heading + " 🐶";
-                            break;
+                    if (type === "cats") {
+                        this.textContent = "🐱 " + this.heading + " 🐱";
+                    }
+                    else if (type === "dogs") {
+                        this.textContent = "🐶 " + this.heading + " 🐶";
                     }
                 }
 

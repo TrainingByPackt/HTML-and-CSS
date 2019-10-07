@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Exercise 3: Mouse Input Worklet</title>
+        <title>Exercise 3: Fill Color Paint Worklet</title>
         <style>
             body {
                 padding: 0;
@@ -12,56 +12,32 @@
         </style>
     </head>
     <body>
-        <div class="centered-content">
-            <button class="button pointer centered-content">
-                Click me!
-            </button>
+        <div class="fill-background green">
+            This div should have a green background.
+        </div>
+        <div class="fill-background orange">
+            This div should have an orange background.
         </div>
         <style>
-            :root {
-                --position-x: 0;
-                --position-y: 0;
-                --primary-fill-color: #7200ca;
-                --secondary-fill-color: #12005e;
-                --size: 0.1;
+            .green {
+                --fill-color: #05a505;
             }
 
-            .centered-content {
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            .orange {
+                --fill-color: #ff9900;
             }
 
-            .button {
-                outline: none;
-                user-select: none;
-                -webkit-appearance: none;
-                appearance: none;
-                margin: 16px;
-                width: 375px;
-                height: 150px;
-                padding: 16px;
-                font-size: 24px;
-            }
-
-            .pointer {
-                background: paint(pointer);
+            .fill-background {
+                box-sizing: border-box;
+                background: paint(color-fill);
                 color: white;
-            }
-
-            .pointer:visited,
-            .pointer:active {
-                --secondary-fill-color: #12005e;
-                --size: 10;
+                width: 100%;
+                height: 100px;
+                padding: 16px;
             }
         </style>
         <script>
-            const mouseInput = document.querySelector('.pointer');
-            mouseInput.addEventListener('mousemove', () => {
-                document.documentElement.style.setProperty('--position-x', event.offsetX);
-                document.documentElement.style.setProperty('--position-y', event.offsetY);
-            });
-            CSS.paintWorklet.addModule('pointer-input-paint.js');
+            CSS.paintWorklet.addModule('color-fill-paint.js');
         </script>
     </body>
 </html>
