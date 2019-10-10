@@ -1,5 +1,5 @@
 (function() {
-    const template = document.createElement('template');
+    const template = document.createElement("template");
     template.id = "simple-modal-template";
     template.innerHTML = `
     <style>
@@ -62,14 +62,14 @@
 
     document.body.appendChild(template);
 
-    customElements.define('simple-modal', class SimpleModal extends HTMLElement {
+    customElements.define("simple-modal", class SimpleModal extends HTMLElement {
         constructor() {
             super();
-            this.attachShadow({ mode: 'open' });
+            this.attachShadow({ mode: "open" });
         }
     
         connectedCallback() {
-            const tmpl = document.getElementById('simple-modal-template');
+            const tmpl = document.getElementById("simple-modal-template");
             const node = document.importNode(tmpl.content, true);
             this.shadowRoot.appendChild(node);     
         }

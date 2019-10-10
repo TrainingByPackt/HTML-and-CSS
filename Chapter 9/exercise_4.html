@@ -13,7 +13,7 @@
         <script>
             class AnchorInfo extends HTMLAnchorElement {
                 static get observedAttributes() {
-                    return ['target'];
+                    return ["target"];
                 }
 
                 constructor() {
@@ -24,14 +24,14 @@
                 attributeChangedCallback(name, oldValue, newValue) {
                     if (oldValue === newValue) { return; }
                     switch (name) {
-                        case 'target':
+                        case "target":
                             this.checkTarget();
                             break;
                     }
                 }
 
                 checkTarget() {
-                    this.opensInNewTab = this.target === '_blank';
+                    this.opensInNewTab = this.target === "_blank";
                     this.render();
                 }
 
@@ -41,7 +41,7 @@
                 }
             }
 
-            window.customElements.define("anchor-info", AnchorInfo, { extends: 'a'});
+            window.customElements.define("anchor-info", AnchorInfo, { extends: "a"});
         </script>
     </body>
 </html>

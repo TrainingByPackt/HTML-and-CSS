@@ -82,14 +82,14 @@
         </section>
     </template>
     <script>
-        customElements.define('fod-profile', class FODProfile extends HTMLElement {
+        customElements.define("fod-profile", class FODProfile extends HTMLElement {
             constructor() {
                 super();
-                this.attachShadow({ mode: 'open' });
+                this.attachShadow({ mode: "open" });
             }
 
             connectedCallback() {
-                const tmpl = document.getElementById('fod-profile-template');
+                const tmpl = document.getElementById("fod-profile-template");
                 const node = document.importNode(tmpl.content, true);
                 this.shadowRoot.appendChild(node);     
             }

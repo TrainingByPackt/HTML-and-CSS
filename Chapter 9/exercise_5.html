@@ -27,7 +27,7 @@
         <script>
             class BlogHeadline extends HTMLElement {
                 static get observedAttributes() {
-                    return ['type', 'newpost'];
+                    return ["type", "newpost"];
                 }
 
                 constructor() {
@@ -35,12 +35,12 @@
                     this._heading = this.textContent;
                     this.textContent = "";
                     
-                    this.attachShadow({ mode: 'open' });
+                    this.attachShadow({ mode: "open" });
                     
-                    this.headingElement = document.createElement('h1');
+                    this.headingElement = document.createElement("h1");
                     this.headingElement.textContent = this._heading;
 
-                    this.styleElement = document.createElement('style');
+                    this.styleElement = document.createElement("style");
                     this.styleElement.innerText = `.new-post::after { font-weight: bold; content: "⏰ NEW! ⏰"; margin-left: 8px; }`;
                     this.shadowRoot.appendChild(this.styleElement);
                     this.shadowRoot.appendChild(this.headingElement);
@@ -56,13 +56,11 @@
 
                 attributeChangedCallback(name, oldValue, newValue) {
                     if (oldValue === newValue) { return; }
-                    switch(name) {
-                        case 'type':
-                            this.setIcon(this.type);
-                            break;
-                        case 'newpost':
-                            this.setIsNewPostIcon(this.newpost);
-                            break;
+                    if (name === "type") {
+                        this.setIcon(this.type);
+                    }
+                    else if (name === "newpost") {
+                        this.setIsNewPostIcon(this.newpost);
                     }
                 }
 
@@ -85,7 +83,7 @@
 
                 set newpost(newValue) {
                     if (newValue) { 
-                        this.setAttribute("newpost", '');
+                        this.setAttribute("newpost", "");
                     }
                     else { 
                         this.removeAttribute("newpost"); 
@@ -94,13 +92,11 @@
                 }
 
                 setIcon(type) {
-                    switch(type) {
-                        case "cats":
-                            this.headingElement.textContent = "🐱 " + this.heading + " 🐱";
-                            break;
-                        case "dogs":
-                            this.headingElement.textContent = "🐶 " + this.heading + " 🐶";
-                            break;
+                    if (type === "cats") {
+                        this.headingElement.textContent = "🐱 " + this.heading + " 🐱";
+                    }
+                    else if (type === "dogs") {
+                        this.headingElement.textContent = "🐶 " + this.heading + " 🐶";
                     }
                 }
 
