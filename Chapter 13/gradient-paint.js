@@ -1,11 +1,11 @@
 class GradientPaintWorklet {
     static get inputProperties() {
-        return ['--primary-fill-color', '--secondary-fill-color'];
+        return ["--primary-fill-color", "--secondary-fill-color"];
     }
 
     paint(context, geometry, properties) {
-        const primaryColor = properties.get('--primary-fill-color');
-        const secondaryColor = properties.get('--secondary-fill-color');
+        const primaryColor = properties.get("--primary-fill-color");
+        const secondaryColor = properties.get("--secondary-fill-color");
 
         const gradient = context.createLinearGradient(0, 0, geometry.width, geometry.height);
         gradient.addColorStop(0, primaryColor);
@@ -16,4 +16,4 @@ class GradientPaintWorklet {
     }
 }
 
-registerPaint('animated-gradient', GradientPaintWorklet);
+registerPaint("animated-gradient", GradientPaintWorklet);

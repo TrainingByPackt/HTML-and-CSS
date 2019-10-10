@@ -94,24 +94,24 @@
         </style>
         <script>
             if (window.CSS) {
-                if ('registerProperty' in CSS) {
+                if ("registerProperty" in CSS) {
                     CSS.registerProperty({
                         name: "--primary-fill-color",
                         syntax: "<color>",
                         inherits: false,
-                        initialValue: '#f44336'
+                        initialValue: "#f44336"
                     });
 
                     CSS.registerProperty({
                         name: "--secondary-fill-color",
                         syntax: "<color>",
                         inherits: false,
-                        initialValue: '#ff9900'
+                        initialValue: "#ff9900"
                     });
                 }
 
-                if ('paintWorklet' in CSS) {
-                    CSS.paintWorklet.addModule('gradient-paint.js');
+                if ("paintWorklet" in CSS) {
+                    CSS.paintWorklet.addModule("gradient-paint.js");
                 }
             }
         </script>
