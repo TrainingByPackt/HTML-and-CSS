@@ -1,69 +1,50 @@
 <!DOCTYPE html>
 <html lang=”en”>
     <head>
-        <meta charset=”utf-8”>
-        <title>Exercise 6: Drawing Shapes</title>
+        <title>Exercise 5</title>
         <style> canvas { border: 1px solid gray; } </style>
     </head>
     <body>
         <canvas width="320" height="240" id="canvasArea"></canvas>
         <script>
-            function fillCircle(context, centerX, centerY, radius, fillStyle) {
-                context.beginPath();
-                context.fillStyle = fillStyle;
-                context.arc(centerX, centerY, radius, 0, Math.PI * 2, false);
+            function drawSky(context) {
+                context.fillStyle = "#030339";
+                context.fillRect(0, 0, canvasElement.width, canvasElement.height);
+            }
+
+            function drawIgloo(context) {
+                context.fillStyle = "white";
+
+                context.arc(120, 160, 60, 0, Math.PI * 2, false);
                 context.fill();
-            }
+                
+                context.fillRect(160, 135, 30, 50); // igloo door
 
-            function drawSun(context) {
-                const centerX = 250;
-                const centerY = 80;
-                const radius = 45;
+                context.strokeStyle = "#cffcff";
+                context.lineWidth = 4;
+                context.fillStyle = "#030339";
 
-                const numberOfFlares = 12;
-                for (var i = 0; i<numberOfFlares; i++) {
-                    const angle = i * (Math.PI * 2 / numberOfFlares);
-                    fillCircle(
-                        context, 
-                        centerX + Math.sin(angle) * radius,
-                        centerY + Math.cos(angle) * radius, 
-                        10,
-                        "gold"
-                    );
-                }
-                fillCircle(context, centerX, centerY, radius, "yellow");
-            }
-
-            function drawSnowflake(context) {
-                const centerX = 60;
-                const centerY = 180;
-                const radius = 30;
-
-                context.lineWidth = 5;
-                context.lineCap = 'round';
                 context.beginPath();
-                context.strokeStyle = "lightblue";
-
-                const numberOfLines = 8;
-                for (var i = 0; i < numberOfLines; i++) {
-                    const angle = i * (Math.PI * 2 / numberOfLines);
-                    context.moveTo(centerX, centerY);
-                    context.lineTo(
-                        centerX + Math.sin(angle) * radius, 
-                        centerY + Math.cos(angle) * radius
-                    );
-                }
+                context.arc(194, 160, 23, 0, Math.PI * 2, false);
+                context.fill();
                 context.stroke();
             }
 
+            function drawFloor(context) {
+                context.fillStyle = "#cffcffef";
+                context.fillRect(0, 160, canvasElement.width, 80);
+            }
+
             function drawFrame(context) {
-                drawSun(context);
-                drawSnowflake(context);
+                context.clearRect(0, 0, canvasElement.width, canvasElement.height);
+                drawSky(context);
+                drawIgloo(context);
+                drawFloor(context);
             }
 
             const canvasElement = document.getElementById('canvasArea');
             if (canvasElement.getContext) {
- 				const context = canvasElement.getContext('2d');
+                const context = canvasElement.getContext('2d');
                 drawFrame(context);
             }
         </script>
