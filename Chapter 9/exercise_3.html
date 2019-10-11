@@ -31,12 +31,12 @@
         <script>
             class BlogHeadline extends HTMLElement {
                 static get observedAttributes() {
-                    return ['type', 'newpost'];
+                    return ["type", "newpost"];
                 }
 
                 constructor() {
                     super();
-                    this._heading = this.textContent;
+                    this.heading = this.textContent;
                 }
 
                 connectedCallback() {
@@ -77,7 +77,7 @@
 
                 set newpost(newValue) {
                     if (newValue) { 
-                        this.setAttribute("newpost", '');
+                        this.setAttribute("newpost", "");
                     }
                     else { 
                         this.removeAttribute("newpost"); 
@@ -105,28 +105,28 @@
             }
             window.customElements.define("blog-headline", BlogHeadline);
 
-            const headline = document.querySelector('blog-headline');
+            const headline = document.querySelector("blog-headline");
             const headlineParent = headline.parentElement;
-            const swapTypeButton = document.getElementById('swap-type-1');
-            const swapNewpostButton = document.getElementById('swap-newpost-1');
-            const toggleConnectionButton = document.getElementById('toggle-connect-1');
+            const swapTypeButton = document.getElementById("swap-type-1");
+            const swapNewpostButton = document.getElementById("swap-newpost-1");
+            const toggleConnectionButton = document.getElementById("toggle-connect-1");
 
-            swapTypeButton.addEventListener('click', function() {
-                const type = headline.getAttribute('type');
-                headline.setAttribute('type', type === 'cats' ? 'dogs' : 'cats')
+            swapTypeButton.addEventListener("click", function() {
+                const type = headline.getAttribute("type");
+                headline.setAttribute("type", type === "cats" ? "dogs" : "cats")
             });
 
-            swapNewpostButton.addEventListener('click', function() {
-                const newpost = headline.hasAttribute('newpost');
+            swapNewpostButton.addEventListener("click", function() {
+                const newpost = headline.hasAttribute("newpost");
                 if (newpost) {
-                    headline.removeAttribute('newpost');
+                    headline.removeAttribute("newpost");
                 }
                 else {
-                    headline.setAttribute('newpost', '');
+                    headline.setAttribute("newpost", "");
                 }
             });
 
-            toggleConnectionButton.addEventListener('click', function() {
+            toggleConnectionButton.addEventListener("click", function() {
                 if (headline.parentElement) {
                     headlineParent.removeChild(headline);
                 }

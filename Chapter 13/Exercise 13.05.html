@@ -54,32 +54,32 @@
             }
         </style>
         <script>
-            const mouseInput = document.querySelector('.pointer');
-            mouseInput.addEventListener('mousemove', () => {
-                document.documentElement.style.setProperty('--position-x', event.offsetX);
-                document.documentElement.style.setProperty('--position-y', event.offsetY);
+            const mouseInput = document.querySelector(".pointer");
+            mouseInput.addEventListener("mousemove", () => {
+                document.documentElement.style.setProperty("--position-x", event.offsetX);
+                document.documentElement.style.setProperty("--position-y", event.offsetY);
             });
 
             CSS.registerProperty({
                 name: "--primary-fill-color",
                 syntax: "<color>",
                 inherits: false,
-                initialValue: '#7200ca'
+                initialValue: "#7200ca"
             });
             CSS.registerProperty({
                 name: "--secondary-fill-color",
                 syntax: "<color>",
                 inherits: false,
-                initialValue: '#12005e'
+                initialValue: "#12005e"
             });
             CSS.registerProperty({
-                name: '--size',
-                syntax: '<number>',
+                name: "--size",
+                syntax: "<number>",
                 inherits: false,
                 initialValue: 0.05
             });
 
-            CSS.paintWorklet.addModule('pointer-input-paint.js');
+            CSS.paintWorklet.addModule("pointer-input-paint.js");
         </script>
     </body>
 </html>
