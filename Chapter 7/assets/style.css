@@ -835,7 +835,7 @@ h6,
 header nav {
     font-family: "Roboto", sans-serif
 }
-.container {
+.content-area {
     width: 80%;
     max-width: 800px;
     margin: auto;
@@ -1021,7 +1021,7 @@ dl {
     }
 }
 @media screen and (min-width: 1200px) {
-    .container {
+    .content-area {
         max-width: 1200px
     }
     article .content {
@@ -1035,7 +1035,7 @@ dl {
         background: 0 0;
         overflow-x: hidden
     }
-    .container {
+    .content-area {
         width: 100%
     }
     header.site-header{
