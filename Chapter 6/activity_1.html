@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CSS Animations activity</title>
+    <style>
+      .content {
+        width: 780px;
+        margin: 0 auto;
+      }
+      /* I've picked the colours from: https://flatuicolors.com/palette/defo */
+      ul {
+        border-radius: 10px;
+        overflow: hidden;
+        padding: 0;
+      }
+
+      li {
+        transition: 500ms;
+        color: white;
+        background: #7f8c8d;
+        color: #fff;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+
+      li:nth-child(1):hover {
+        background: #2980b9;
+      }
+
+      li:nth-child(2):hover {
+        background: #e74c3c;
+      }
+
+      li:nth-child(3):hover {
+        background: #8e44ad;
+      }
+
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale3d(0.3, 0.3, 0.3);
+        }
+
+        50% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes bounceIn {
+        from,
+        20%,
+        40%,
+        60%,
+        80%,
+        to {
+          animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        0% {
+          opacity: 0;
+          transform: scale3d(0.3, 0.3, 0.3);
+        }
+
+        20% {
+          transform: scale3d(1.1, 1.1, 1.1);
+        }
+
+        40% {
+          transform: scale3d(0.9, 0.9, 0.9);
+        }
+
+        60% {
+          opacity: 1;
+          transform: scale3d(1.03, 1.03, 1.03);
+        }
+
+        80% {
+          transform: scale3d(0.97, 0.97, 0.97);
+        }
+
+        to {
+          opacity: 1;
+          transform: scale3d(1, 1, 1);
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          transform: translate3d(0, 100%, 0);
+          visibility: visible;
+        }
+
+        to {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      .zoomIn {
+        animation-name: zoomIn;
+        animation-duration: 0.25s;
+      }
+
+      .slideInUp {
+        animation-name: slideInUp;
+        animation-duration: 0.25s;
+      }
+
+      .bounceIn {
+        animation-name: bounceIn;
+        animation-duration: 0.75s;
+      }
+
+      .bounceIn,
+      .zoomIn,
+      .slideInUp {
+        animation-play-state: paused;
+      }
+
+      .square {
+        background: #000;
+        height: 100%;
+      }
+
+      .square-wrapper {
+        overflow: hidden;
+        height: 100px;
+        background: #f1f1f1;
+      }
+
+      .square-wrapper:hover .square {
+        animation-play-state: running;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>CSS Animations are</h1>
+      <ul>
+        <li>Faster than JavaScript</li>
+        <li>Easier for the browser to optimize</li>
+        <li>the spice of user experience</li>
+      </ul>
+      <h2>Some cool animations</h2>
+      <p>Let's have a look at a bounce in animation. Hover over the light gray area.</p>
+      <div class="square-wrapper">
+        <div class="square bounceIn"></div>
+      </div>
+      <p>Let's have a look at a zoom in animation. Hover over the light gray area.</p>
+      <div class="square-wrapper">
+        <div class="square zoomIn"></div>
+      </div>
+      <p>Let's have a look at a slide in up animation. Hover over the light gray area.</p>
+      <div class="square-wrapper">
+        <div class="square slideInUp"></div>
+      </div>
+    </div>
+  </body>
+</html>
