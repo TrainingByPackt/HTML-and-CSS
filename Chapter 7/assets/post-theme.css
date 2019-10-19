@@ -31,7 +31,6 @@
   margin: auto;
   background: #999;
   box-shadow: none;
-  ;
 }
 
 .postid-11002 header.site-header h1 a {
@@ -48,7 +47,9 @@
 }
 
 .postid-11002 article.tag-h5bp .entry-header {
-  background: #222 url(icon.png) no-repeat;
+  background-color: #222;
+  background-image: url(icon.png);
+  background-repeat: no-repeat;
   background-size: contain;
   height: 200px;
   padding-left: 200px;
